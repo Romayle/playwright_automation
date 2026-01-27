@@ -1,0 +1,8 @@
+{
+    "employeeName": "John Doe",
+    "employeeId": "E12345",
+    "employmentStatus": "Freelance",
+    "include": "Current Employees Only",
+    "supervisorName": "Robert Johnson",
+    "jobTitle": "Software Engineer"
+}

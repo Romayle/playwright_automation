@@ -1,0 +1,68 @@
+[
+  {
+    "address": {
+      "geolocation": {
+        "lat": "40.7128",
+        "long": "-74.0060"
+      },
+      "city": "new york",
+      "street": "broadway",
+      "number": 1024,
+      "zipcode": "10001-1234"
+    },
+    "id": 1,
+    "email": "alice@gmail.com",
+    "username": "alicew",
+    "password": "aL!c3p@ss",
+    "name": {
+      "firstname": "alice",
+      "lastname": "walker"
+    },
+    "phone": "1-212-555-0198",
+    "__v": 0
+  },
+  {
+    "address": {
+      "geolocation": {
+        "lat": "34.0522",
+        "long": "-118.2437"
+      },
+      "city": "los angeles",
+      "street": "sunset boulevard",
+      "number": 455,
+      "zipcode": "90028-4321"
+    },
+    "id": 2,
+    "email": "mike@yahoo.com",
+    "username": "mike87",
+    "password": "m!k3_87",
+    "name": {
+      "firstname": "michael",
+      "lastname": "brown"
+    },
+    "phone": "1-323-555-8844",
+    "__v": 0
+  },
+  {
+    "address": {
+      "geolocation": {
+        "lat": "51.5074",
+        "long": "-0.1278"
+      },
+      "city": "london",
+      "street": "oxford street",
+      "number": 221,
+      "zipcode": "WC2N-5DU"
+    },
+    "id": 3,
+    "email": "sarah@hotmail.com",
+    "username": "sarah_l",
+    "password": "S@r4hPwd",
+    "name": {
+      "firstname": "sarah",
+      "lastname": "lee"
+    },
+    "phone": "44-20-7946-0958",
+    "__v": 0
+  }
+]

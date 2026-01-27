@@ -1,0 +1,28 @@
+[
+    {
+        "firstName": "John",
+        "middleName": "M",
+        "lastName": "Doe",
+        "employeeId": "E12345",
+        "createLoginDetails": true,
+        "loginDetails": {
+            "username": "johndoe",
+            "status": "Enabled",
+            "password": "Password123!",
+            "confirmPassword": "Password123!"
+        }
+    },
+    {
+        "firstName": "Jane",
+        "middleName": "R",
+        "lastName": "Smith",
+        "employeeId": "E12346",
+        "createLoginDetails": false,
+        "loginDetails": {
+            "username": "",
+            "status": "",
+            "password": "",
+            "confirmPassword": ""
+        }
+    }
+]

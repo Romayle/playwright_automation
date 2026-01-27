@@ -1,0 +1,55 @@
+[
+  {
+    "address": {
+      "geolocation": {
+        "lat": null,
+        "long": "not-a-number"
+      },
+      "city": "",
+      "street": 123,
+      "number": "seven",
+      "zipcode": "ABCDE"
+    },
+    "id": "one",
+    "email": "not-an-email",
+    "username": "",
+    "password": "123",
+    "name": {
+      "firstname": "",
+      "lastname": null
+    },
+    "phone": "abcdefg",
+    "__v": "zero"
+  },
+  {
+    "address": {
+      "geolocation": {
+        "lat": "-91.0000",
+        "long": "181.0000"
+      },
+      "city": "paris",
+      "street": "rue de test",
+      "number": -45,
+      "zipcode": null
+    },
+    "id": 2,
+    "email": "user@domain",
+    "username": "u",
+    "password": "",
+    "name": {
+      "firstname": 404,
+      "lastname": true
+    },
+    "phone": null,
+    "__v": -1
+  },
+  {
+    "id": 3,
+    "email": "",
+    "username": null,
+    "password": null,
+    "name": {},
+    "phone": "123",
+    "__v": 0
+  }
+]

@@ -1,0 +1,9 @@
+{
+    "fromDate": "2024-06-01",
+    "toDate": "2024-06-15",
+    "showLeaveWithStatus": "Scheduled",
+    "leaveType": "CAN - Vacation",
+    "employeeName": "John Doe",
+    "subUnit": "Administration",
+    "includePastEmployees": false
+}
