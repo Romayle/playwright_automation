@@ -1,12 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { loginUser } from '../utils/page-helper';
+import { redirectToPIM } from '../utils/page-helper';
 
 test.describe('PIM Tests', () => {
     test('Search for an employee - Positive flow', async ({ page }) => {
-        await loginUser(page);
-
-        // Navigate to PIM
-        await page.getByRole('link', { name: 'PIM' }).click();
+        await redirectToPIM(page);
 
         // Wait for PIM search form
         const pimForm = page.locator('.oxd-table-filter-area form');
@@ -16,22 +13,19 @@ test.describe('PIM Tests', () => {
         const employeeNameInput = pimForm.locator(
         'input[placeholder="Type for hints..."]'
         );
-        await employeeNameInput.fill('John Doe');
+        await employeeNameInput.first().fill('John Doe');
 
         // Select matching suggestion
-        await page.locator('.oxd-autocomplete-dropdown > div')
-        .filter({ hasText: 'John Doe' })
-        .click();
+        await page.getByRole('option', { name: 'John Doe' }).first().click();
 
         // Employee ID
-        await pimForm.locator('input.oxd-input').nth(1).fill('3016');
+        // await page.getByRole('textbox').nth(2).fill('3016');
+        // await pimForm.locator('input.oxd-input').nth(1).fill('3016');
 
         // Employment Status dropdown
-        await pimForm.locator('.oxd-select-text-input').first().click();
-        await page.locator('.oxd-select-dropdown .oxd-select-option')
-        .filter({ hasText: 'Current Employees Only' })
-        .click();
-
+        await page.getByText('Current Employees Only').first().click();
+        await page.getByRole('option', { name: 'Current Employees Only' }).click();
+        
         // Click Search
         await pimForm.locator('button:has-text("Search")').click();
 
@@ -47,17 +41,15 @@ test.describe('PIM Tests', () => {
     });
 
     test('Search for an employee - Negative flow', async ({ page }) => {
-        await loginUser(page);
-
-        // Navigate to PIM
-        await page.getByRole('link', { name: 'PIM' }).click();
+        await redirectToPIM(page);
 
         // Wait for PIM search form
         const pimForm = page.locator('.oxd-table-filter-area form');
         await pimForm.waitFor({ state: 'visible' });
 
         // Employee ID - Use non-existent ID
-        await pimForm.locator('input.oxd-input').nth(1).fill('999999');
+        // await pimForm.locator('input.oxd-input').nth(1).fill('999999');
+        await page.getByRole('textbox').nth(2).fill('999999');
 
         // Employment Status dropdown
         await pimForm.locator('.oxd-select-text-input').first().click();
@@ -79,10 +71,7 @@ test.describe('PIM Tests', () => {
 
 
     test('Add a new employee - Positive flow', async ({ page }) => {
-        loginUser(page);
-
-        // Go to PIM section
-        await page.getByRole('link', { name: 'PIM' }).click();
+        await redirectToPIM(page);
         await page.getByRole('button', { name: 'Add' }).click();
 
         // Fill employee details
@@ -112,10 +101,7 @@ test.describe('PIM Tests', () => {
     });
 
     test('Add a new employee - Negative flow', async ({ page }) => {
-        await loginUser(page);
-
-        // Go to PIM section
-        await page.getByRole('link', { name: 'PIM' }).click();
+        await redirectToPIM(page);
         await page.getByRole('button', { name: 'Add' }).click();
 
         // Fill only First Name (missing required Last Name)

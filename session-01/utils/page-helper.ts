@@ -27,6 +27,14 @@ export async function redirectToLeave(page: any) {
 
     // Go to Admin section
     await page.getByRole('link', { name: 'Leave' }).click();
-    await page.getByRole('listitem', { hasText: 'Assign Leave' }).click();
+    await page.getByRole('link', { name: 'Assign Leave' }).click();
+
+}
+
+export async function redirectToPIM(page: any) {
+    await loginUser(page);
+
+    // Go to Admin section
+    await page.getByRole('link', { name: 'PIM' }).click();
 
 }
