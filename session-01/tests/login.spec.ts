@@ -11,7 +11,7 @@ test.describe('Login Tests', { tag: ['@ui', '@login'] }, () => {
 
   test('Invalid login', { tag: ['@regression', '@negative'] }, async ({ page }) => {
     // Navigate to login page
-    await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+    await page.goto(process.env.ORANGE_HRM_URL!);
 
     // Enter invalid credentials
     await page.getByPlaceholder('Username').fill('Admin');

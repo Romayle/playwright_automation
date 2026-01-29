@@ -14,7 +14,7 @@ export class LoginPage {
     }
 
     async goto() {
-        await this.page.goto('https://opensource-demo.orangehrmlive.com/');
+        await this.page.goto(process.env.ORANGE_HRM_URL!);
     }
 
     async login(username: string, password: string) {

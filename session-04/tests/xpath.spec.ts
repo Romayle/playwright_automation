@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('XPath examples', async ({ page }) => {
-    await page.goto('https://opensource-demo.orangehrmlive.com/');
+    await page.goto(process.env.ORANGE_HRM_URL!);
 
     // 1. Relative XPath with contains()
     const usernameInput = page.locator('//input[contains(@name, "username")]');

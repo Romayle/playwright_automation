@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+  await page.goto(process.env.ORANGE_HRM_URL!);
   await page.getByRole('textbox', { name: 'Username' }).click();
   await page.getByRole('textbox', { name: 'Username' }).press('CapsLock');
   await page.getByRole('textbox', { name: 'Username' }).fill('A');

@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 
 export async function loginUser(page: any) {
     // Navigate to login page
-    await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+    await page.goto(process.env.ORANGE_HRM_URL!);
 
     // Fill credentials
     await page.getByPlaceholder('Username').fill('Admin');
