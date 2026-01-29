@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { redirectToLeave } from '../utils/page-helper';
+import { logoutUser, redirectToLeave } from '../utils/page-helper';
 
-test.describe('Apply for leave', () => {
-    test('Apply for leave - Positive flow', async ({ page }) => {
+test.describe('Apply for leave', { tag: ['@ui', '@leave'] }, () => {
+    test('Apply for leave - Positive flow', { tag: ['@smoke', '@positive'] }, async ({ page }) => {
         await redirectToLeave(page);
 
         // Fill Employee Name
@@ -21,9 +21,11 @@ test.describe('Apply for leave', () => {
 
         // Verify success - should show confirmation or navigate away
         await page.waitForTimeout(1000);
+        
+        await logoutUser(page);
     });
 
-    test('Apply for leave - Negative flow', async ({ page }) => {
+    test('Apply for leave - Negative flow', { tag: ['@regression', '@negative'] }, async ({ page }) => {
         await redirectToLeave(page);
 
         // Try to assign leave without filling any required fields
@@ -36,6 +38,8 @@ test.describe('Apply for leave', () => {
 
         // Verify we're still on the assign leave page
         await expect(page).toHaveURL(/assignLeave/);
+
+        await logoutUser(page);
     });
 
 });

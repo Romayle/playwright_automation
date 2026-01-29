@@ -1,13 +1,15 @@
 import { test, expect } from '@playwright/test';
-import { loginUser } from '../utils/page-helper';
+import { loginUser, logoutUser } from '../utils/page-helper';
 
-test.describe('Login Tests', () => {
+test.describe('Login Tests', { tag: ['@ui', '@login'] }, () => {
 
-  test('Valid login', async ({ page }) => {
+  test('Valid login', { tag: ['@smoke', '@positive', '@critical'] }, async ({ page }) => {
     await loginUser(page);
+    
+    await logoutUser(page);
   });
 
-  test('Invalid login', async ({ page }) => {
+  test('Invalid login', { tag: ['@regression', '@negative'] }, async ({ page }) => {
     // Navigate to login page
     await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
 
@@ -22,6 +24,8 @@ test.describe('Login Tests', () => {
 
     await expect(errorMessage).toBeVisible();
     await expect(errorMessage).toHaveText('Invalid credentials');
+    
+    await logoutUser(page);
   });
 
 });

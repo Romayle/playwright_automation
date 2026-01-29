@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { redirectToPIM } from '../utils/page-helper';
+import { logoutUser, redirectToPIM } from '../utils/page-helper';
 
-test.describe('PIM Tests', () => {
-    test('Search for an employee - Positive flow', async ({ page }) => {
+test.describe('PIM Tests', { tag: ['@ui', '@pim'] }, () => {
+    test('Search for an employee - Positive flow', { tag: ['@smoke', '@positive'] }, async ({ page }) => {
         await redirectToPIM(page);
 
         // Wait for PIM search form
@@ -38,9 +38,11 @@ test.describe('PIM Tests', () => {
         
         await expect(resultsMessage).toBeVisible();
         await expect(resultsMessage).not.toHaveText('No Records Found');
+        
+        await logoutUser(page);        
     });
 
-    test('Search for an employee - Negative flow', async ({ page }) => {
+    test('Search for an employee - Negative flow', { tag: ['@regression', '@negative'] }, async ({ page }) => {
         await redirectToPIM(page);
 
         // Wait for PIM search form
@@ -67,10 +69,12 @@ test.describe('PIM Tests', () => {
         
         await expect(resultsMessage).toBeVisible();
         await expect(resultsMessage).toHaveText('No Records Found');
+
+        await logoutUser(page);
     });
 
 
-    test('Add a new employee - Positive flow', async ({ page }) => {
+    test('Add a new employee - Positive flow', { tag: ['@smoke', '@positive', '@critical'] }, async ({ page }) => {
         await redirectToPIM(page);
         await page.getByRole('button', { name: 'Add' }).click();
 
@@ -98,9 +102,11 @@ test.describe('PIM Tests', () => {
 
         // Optional: Verify navigation to personal details page
         await expect(page).toHaveURL(/viewPersonalDetails/);
+
+        await logoutUser(page);
     });
 
-    test('Add a new employee - Negative flow', async ({ page }) => {
+    test('Add a new employee - Negative flow', { tag: ['@regression', '@negative'] }, async ({ page }) => {
         await redirectToPIM(page);
         await page.getByRole('button', { name: 'Add' }).click();
 
@@ -118,6 +124,8 @@ test.describe('PIM Tests', () => {
 
         // Verify we're still on the add employee page (not redirected)
         await expect(page).toHaveURL(/addEmployee/);
+
+        await logoutUser(page);
     });
 
 });

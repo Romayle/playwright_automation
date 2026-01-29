@@ -38,3 +38,9 @@ export async function redirectToPIM(page: any) {
     await page.getByRole('link', { name: 'PIM' }).click();
 
 }
+
+export async function logoutUser(page: any) {
+    await page.getByRole('banner').getByRole('img', { name: 'profile picture' }).click();
+    await page.getByRole('menuitem', { name: 'Logout' }).click();
+
+}
