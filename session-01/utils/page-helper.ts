@@ -12,7 +12,9 @@ export async function loginUser(page: any) {
     await page.getByRole('button', { name: 'Login' }).click();
 
     // Assert login success (dashboard visible)
-    await expect(page.locator('.oxd-topbar-header')).toBeVisible();
+    const header = page.locator('.oxd-topbar-header');
+    await header.waitFor({ state: 'visible' });
+    await expect(header).toBeVisible();
 }
 
 export async function redirectToAdmin(page: any) {

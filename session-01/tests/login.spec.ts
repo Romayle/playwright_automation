@@ -21,11 +21,11 @@ test.describe('Login Tests', { tag: ['@ui', '@login'] }, () => {
     await page.getByRole('button', { name: 'Login' }).click();
 
     const errorMessage = page.locator('.oxd-alert--error .oxd-alert-content-text');
+    await errorMessage.waitFor({ state: 'visible' });
 
     await expect(errorMessage).toBeVisible();
     await expect(errorMessage).toHaveText('Invalid credentials');
     
-    await logoutUser(page);
   });
 
 });
