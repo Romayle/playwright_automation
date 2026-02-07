@@ -7,18 +7,38 @@ export class ApiClient {
 ) {}
 
   async get(path: string) {
-    return this.request.get(`${this.baseUrl}${path}`);
+    return await this.request.get(`${this.baseUrl}${path}`, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (GitHub Actions CI)",
+        "Accept": "application/json"
+      }
+    });
   }
 
   async post(path: string, data: any) {
-    return this.request.post(`${this.baseUrl}${path}`, { data });
+    return await this.request.post(`${this.baseUrl}${path}`, {
+      data, headers: {
+        "User-Agent": "Mozilla/5.0 (GitHub Actions CI)",
+        "Accept": "application/json"
+      }
+    });
   }
 
   async put(path: string, data: any) {
-    return this.request.put(`${this.baseUrl}${path}`, { data });
+    return await this.request.put(`${this.baseUrl}${path}`, {
+      data, headers: {
+        "User-Agent": "Mozilla/5.0 (GitHub Actions CI)",
+        "Accept": "application/json"
+      }
+    });
   }
 
   async delete(path: string) {
-    return this.request.delete(`${this.baseUrl}${path}`);
+    return await this.request.delete(`${this.baseUrl}${path}`, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (GitHub Actions CI)",
+        "Accept": "application/json"
+      }
+    });
   }
 }
